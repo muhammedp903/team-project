@@ -13,3 +13,7 @@ Tutor: Elaine Duffin
 * Team Member - Muhammed Patel - 22459321
 * Team Member - Marius Hont - 22510945
 
+## About
+
+Create a todo app that allows the user to track progress with assesments and exams.
+
