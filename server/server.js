@@ -1,13 +1,31 @@
-const { response } = require('express');
 const express = require('express');
-const {readFile} = require('fs').promises;
-
+const cors = require('cors');
+const PORT = 3000
+let users = [
+    {"name":"thomas@email.com","pass":"seecretPassword", "data":"THISISDATA"},
+    {"name":"test@email.com","pass":"testpass", "data":"THISISDATA"}
+]
 
 const app = express();
+app.use(express.urlencoded({ extended: false}));//Handles URL encoded data
+app.use(express.json({limit: '1mb'}));
+app.use(cors());    
 
-app.get('/', async (req, res) =>{
-    res.send( await readFile('../client/index.html', 'utf-8'))    
 
+app.post('/', (req, res) =>{
+    console.log(req.body);
+    if(checkHash(req.body.name, req.body.pass)){
+        res.status(201).json({test:"Testing"});
+    }else{
+        res.status(401).send('Unortharised')
+    }
+    
 });
 
-app.listen(3000, () => console.log('App avalable on http://localhost:3000'));
+function checkHash(user, pass){
+    // Check username and password are correct
+    console.log(user, pass);
+    return true;
+}
+
+app.listen(PORT, () => console.log('App avalable on http://localhost:'+PORT));
