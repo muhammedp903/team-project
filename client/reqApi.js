@@ -2,8 +2,6 @@ const out = document.querySelector('#out');
 const data = {name:"Name", pass:"Pass"};
 const API_URL = "localhost:3000";
 
-
-
 async function postData(url = "", data = {}) {
 // Default options are marked with *
 const response = await fetch(url, {
