@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  min-height:100vh;
+    background: url('../images/taxi.jpg');
+    background-size:cover;
+   
+
+}
+
+.logo{
+    cursor:pointer;
+    margin-right:auto;
+}
+
+.container{
+    padding: 2rem 1rem;
+    max-width: 800px;
+    width:100%;
+    margin: 0 auto;
+    
+}
+
+.container h1{
+    font-size: 2rem;
+    font-weight:1000;
+    margin-bottom:1rem;
+    color:lightblue;
+
+}
+
+.task-list h2{
+    font-size: 2rem;
+    font-weight:1000;
+    margin-top:1rem;
+    color:lightblue;
+}
+
+#new-task-form{
+    display:flex;
+    
+}
+
+input , button{
+    appearance:none;
+    border: none;
+    outline:none;
+    background:none;
+}
+
+#new-task-input{
+    flex: 1 1 0%;
+    padding: 1rem;
+    border-radius: 1rem;
+    border-radius:1rem;
+    margin-right: 1rem;
+    font-size:1.25rem;
+    border: solid  #fff;
+}
+
+#new-task-input::placeholder{
+    color:lightblue;
+    font-weight:600;
+}
+
+#new-task-submit{
+    font-size: 1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s;
+    border:solid #fff;
+    border-radius:1rem;
+    color:lightblue;
+}
+
+#new-task-submit:hover{
+    opacity:0.6;
+}
+
+.task-list{
+    flex:1 1 0%;
+    max-width: 800px;
+    width:100%;
+    margin: 0 auto;
+
+}
+
+.tasks-list{
+    padding:1rem;
+
+}
+
+.task-list h2{
+     font-size:1.5rem;
+     font-weight:300;
+     margin-bottom:1rem;
+}
+
+#tasks .task{
+    display:flex;
+    justify-content:space-between;
+    padding: 1rem;
+    border-radius:1rem;
+    margin-bottom: 1rem;
+    border: solid #fff;
+}
+
+
+#tasks .task .content{
+    flex: 1 1 0%;
+}
+
+#tasks .task .content .text{
+    color:#fff;
+    font-size: 1.123rem;
+    width:100%;
+    display: block;
+    transition:0.4s;
+}
+
+#tasks .task .content .text:not(:read-only) {
+    color:  lightblue;
+};
+
+
+
+#tasks .task .actions{
+    display:flex;
+    margin: 0 -0.5rem;
+}
+
+.task .actions button{
+    cursor: pointer;
+    margin: 0 0.5rem;
+    font-size: 1.125rem;
+    font-weight:700;
+    text-transform: uppercase;
+    transition:0.4s;
+}
+
+.task .actions button:hover {
+    opacity: 0.55;
+}
+
+
+
+
+li, a , button{
+    font-family:"Montserrat",sans-serif;
+    font-weight: 500 ;
+    font-size:16px;
+    color:#fff;
+    text-decoration: none;
+
+}
+
+header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding:30px 2%;
+}
+
+.nav-links{
+    list-style: none;
+
+}
+
+.nav-links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav-links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover {
+    color: black;
+}
+
+.logout{
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border:none;
+    border-radius:50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.logout:hover{
+    background-color: lightblue;
+}
