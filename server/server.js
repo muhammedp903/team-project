@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const PORT = 3000
 let users = [
-    {"name":"thomas@email.com", "pass":"seecretPassword", "data":"THISISDATA"},
-    {"name":"test@email.com", "pass":"testpass", "data":"THISISDATA"}
+    {"name":"thomas@email.com", "pass":"secretPassword", "data":"THISISDATA"},
+    {"name":"test@email.com", "pass":"testPass", "data":"THISISDATA"}
 ]
 
 const app = express();
