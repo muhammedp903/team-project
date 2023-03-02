@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="viewport" content="width=device-width, initial scale=1.0">
+        <title>Home Page</title>
+        <link rel="stylesheet" href="css/home.css">
+      
+    </head>
+    <body>
+        <header>
+            <img class="logo" src="images/logo.png" alt="">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="£">Home</a></li>
+                <li><a href="£">Your Tasks</a></li>
+            </ul>
+        </nav>
+        <a class="logout" href="login.html"><button> Log Out</button></a>
+       </header>
+    </br>
+        <div class="container">
+              <h1>Add your new assignments:</h1>
+              <form id="new-task-form">
+                    <input type="text"
+                           id="new-task-input"
+                           placeholder="Please add your task here..."/>
+                    <input type="submit"
+                           id="new-task-submit"
+                           value="Add task"/>
+              </form>
+
+              <section class="task-list">
+                <h2>Assignments</h2>
+                <div id="tasks">
+                    <!--<div class="task">
+                        <div class="content">
+                            <input type="text"
+                                   class="text"
+                                   value="hello there"
+                                   
+                            />
+                        </div>
+                        <div class="actions">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </div>
+                    </div> -->
+                </div>
+              </section>
+              
+        </div>
+        <script src="js/home.js"></script>
+    </body>
+
+</html>
