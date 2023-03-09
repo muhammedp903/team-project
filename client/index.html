@@ -4,25 +4,25 @@
         <meta charset="viewport" content="width=device-width, initial scale=1.0">
         <title>Home Page</title>
         <link rel="stylesheet" href="css/home.css">
-      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+        
     </head>
-
     <body>
         <header>
-            <img class="logo" src="images/logo.png" alt="">
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="£">Home</a></li>
-                    <li><a href="£">Your Tasks</a></li>
-                </ul>
-            </nav>
-            <a class="logout" href="login.html"><button> Log Out</button></a>
-        </header>
-
-        <br/>
-
+            <img class="logo" src="images/logo.jpg" alt="">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="£">Home</a></li>
+                <li><a href="£">Your Tasks</a></li>
+            </ul>
+        </nav>
+        <a class="logout" href="login.html"><button> Log Out</button></a>
+       </header>
+    </br>
         <div class="container">
-              <h1>Add your new assignments:</h1>
+              <h1><i>Add your new assignments:</i></h1>
               <form id="new-task-form">
                     <input type="text"
                            id="new-task-input"
@@ -30,31 +30,45 @@
                     <input type="submit"
                            id="new-task-submit"
                            value="Add task"/>
+                           
               </form>
 
+              
+
               <section class="task-list">
-                <h2>Assignments</h2>
+                <h2><i><b>Assignments</b></i></h2>
                 <div id="tasks">
                     <!--<div class="task">
                         <div class="content">
+                            <input type="date">
                             <input type="text"
                                    class="text"
                                    value="hello there"
+                            
                                    
                             />
+
+                            <div class="dates">
+                                <input type="date">
+                            </div>
+                        
                         </div>
+                        
                         <div class="actions">
                             <button class="edit">Edit</button>
                             <button class="delete">Delete</button>
                         </div>
-                    </div> -->
+                       
+                    </div> --> 
                 </div>
+               
+                <input type="date">
               </section>
+              
         </div>
 
+       
         <script src="js/home.js"></script>
-        <script src="reqApi.js"></script>
-
     </body>
 
 </html>
