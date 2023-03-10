@@ -2,7 +2,6 @@ const express = require('express');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const sqlite3 = require('sqlite3');
-const util = require('util');
 const path = require("path");
 
 const PORT = 3000;
@@ -34,6 +33,19 @@ app.get('/', async (req, res, next) =>{
     }else{
         res.sendFile(path.join(__dirname, '../client', 'login.html' ));
     }
+});
+
+app.get('/tasks', (req, res) => {
+    const uid = req.cookies.userID;
+
+    let sql = `SELECT content, dueDate FROM tasks WHERE userID = ?`;
+
+    db.all(sql, [uid], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.status(200).send(rows);
+    });
 });
 
 app.post('/login', (req, res) =>{
