@@ -44,6 +44,12 @@ window.addEventListener('load', () =>{
         task_actions_el.appendChild(task_edit_el);
         task_actions_el.appendChild(task_delete_el);
 
+        const taskDateEl = document.createElement("input");
+        taskDateEl.classList.add("date");
+        taskDateEl.type = "date";
+
+        task_actions_el.appendChild(taskDateEl);
+
         task_el.appendChild(task_actions_el);
 
         list_el.appendChild(task_el);

@@ -20,8 +20,8 @@ const dbConnection = mysql.createConnection({
     password: "test1234",
     database: "team-project"
 });
-
 const query = util.promisify(dbConnection.query).bind(dbConnection);
+
 app.get('/', async (req, res, next) =>{
     const uid = req.cookies.userID;
     console.log(uid);
