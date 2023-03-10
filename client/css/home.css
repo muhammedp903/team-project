@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500');
-
 *{
     margin:0;
     padding:0;
@@ -13,13 +12,18 @@ body{
   min-height:100vh;
     background: url('../images/taxi.jpg');
     background-size:cover;
+    
    
 
 }
 
+
 .logo{
     cursor:pointer;
     margin-right:auto;
+    width:10.5rem;
+    height:7.5rem;
+    border-radius:4.5rem;
 }
 
 .container{
@@ -34,7 +38,7 @@ body{
     font-size: 2rem;
     font-weight:1000;
     margin-bottom:1rem;
-    color:lightblue;
+    color:#fff;
 
 }
 
@@ -42,7 +46,7 @@ body{
     font-size: 2rem;
     font-weight:1000;
     margin-top:1rem;
-    color:lightblue;
+    color:#fff;
 }
 
 #new-task-form{
@@ -61,13 +65,14 @@ input , button{
     flex: 1 1 0%;
     padding: 1rem;
     border-radius: 1rem;
+    border-radius:1rem;
     margin-right: 1rem;
     font-size:1.25rem;
-    border: solid  #fff;
+    border: solid  #0088a9;
 }
 
 #new-task-input::placeholder{
-    color:lightblue;
+    color:#fff;
     font-weight:600;
 }
 
@@ -76,9 +81,9 @@ input , button{
     font-weight:600;
     cursor:pointer;
     transition:0.4s;
-    border:solid #fff;
+    border:solid #0088a9;
     border-radius:1rem;
-    color:lightblue;
+    color:#fff;
 }
 
 #new-task-submit:hover{
@@ -110,7 +115,7 @@ input , button{
     padding: 1rem;
     border-radius:1rem;
     margin-bottom: 1rem;
-    border: solid #fff;
+    border: solid #0088a9;
 }
 
 
@@ -127,8 +132,8 @@ input , button{
 }
 
 #tasks .task .content .text:not(:read-only) {
-    color:  lightblue;
-}
+    color:  lightskyblue;
+};
 
 
 
@@ -156,7 +161,7 @@ input , button{
 li, a , button{
     font-family:"Montserrat",sans-serif;
     font-weight: 500 ;
-    font-size:16px;
+    font-size:25px;
     color:#fff;
     text-decoration: none;
 
@@ -198,4 +203,27 @@ header{
 
 .logout:hover{
     background-color: lightblue;
+}
+
+input[type="date"]{
+    background-color: rgba(0, 136, 169, 1);
+    padding: 15px;
+    margin-top:2rem;
+    margin-left:6rem;
+    position: left;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    font-family: "Roboto Mono",monospace;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
 }
