@@ -10,7 +10,7 @@ body{
   display: flex;
   flex-direction: column;
   min-height:100vh;
-    background: url('../images/taxi.jpg');
+    background: url('/images/taxi.jpg');
     background-size:cover;
     
    
@@ -69,6 +69,7 @@ input , button{
     margin-right: 1rem;
     font-size:1.25rem;
     border: solid  #0088a9;
+    color:#fff;
 }
 
 #new-task-input::placeholder{
@@ -133,7 +134,7 @@ input , button{
 
 #tasks .task .content .text:not(:read-only) {
     color:  lightskyblue;
-};
+}
 
 
 
@@ -207,11 +208,9 @@ header{
 
 input[type="date"]{
     background-color: rgba(0, 136, 169, 1);
-    padding: 15px;
-    margin-top:2rem;
-    margin-left:6rem;
-    position: left;
-    transform: translate(-50%,-50%);
+    padding: 5px;
+    margin-left:5px;
+    position: center;
     top: 50%;
     left: 50%;
     font-family: "Roboto Mono",monospace;
