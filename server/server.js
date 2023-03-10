@@ -1,11 +1,11 @@
 const express = require('express');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
-const mysql = require('mysql');
+const sqlite3 = require('sqlite3');
 const util = require('util');
 const path = require("path");
 
-const PORT = 3000
+const PORT = 3000;
 
 const app = express();
 app.use(express.urlencoded({extended: false})); // Handles URL encoded data
@@ -14,29 +14,26 @@ app.use(express.static(path.join(__dirname, '../client'), {index: false}), );
 app.use(cors());
 app.use(cookieParser());
 
-const dbConnection = mysql.createConnection({
-    host: "localhost",
-    user: "team_project",
-    password: "test1234",
-    database: "team-project"
-});
-const query = util.promisify(dbConnection.query).bind(dbConnection);
+let db = new sqlite3.Database('./database.db');
 
 app.get('/', async (req, res, next) =>{
     const uid = req.cookies.userID;
     console.log(uid);
     if(uid != null){
-        const rows = await query("SELECT username FROM users WHERE userID = " + mysql.escape(uid));
-        console.log(rows);
-        if(rows != null){
-            res.sendFile(path.join(__dirname, '../client', 'index.html' ) );
-        }else{
-            res.sendFile(path.join(__dirname, '../client', 'login.html' ) );
-        }
+        let sql = "SELECT username FROM users WHERE userID = ?";
+
+        db.get(sql, [uid], (err, row) => {
+            if (err) {
+                return console.error(err.message);
+            }
+            return row
+                ? res.sendFile(path.join(__dirname, '../client', 'index.html' ) )
+                : res.sendFile(path.join(__dirname, '../client', 'login.html' ) );
+
+        });
     }else{
         res.sendFile(path.join(__dirname, '../client', 'login.html' ));
     }
-
 });
 
 app.post('/login', (req, res) =>{
@@ -46,44 +43,48 @@ app.post('/login', (req, res) =>{
 
 app.post('/register', (req, res) =>{
     console.log(req.body);
-    addUser(req.body.email, req.body.pass, res);
+    addUser(req.body.name, req.body.email, req.body.pass, res);
+});
+
+app.get('/logout', (req, res) =>{
+    console.log(req.body);
+    res.clearCookie('userID');
+    res.status(200).send();
 });
 
 async function login(email, pass, res) {
     // Check username and password are correct
+
     // TODO: Currently using plaintext passwords. Should be hashed
+    // TODO: Crashes on unrecognised email
     console.log(email, pass);
-    let auth = false;
-    try{
-        const rows = await query("SELECT userID, password FROM users WHERE username = " + mysql.escape(email));
-        console.log(rows);
-        auth = rows[0].password === pass;
-        if(auth){
-            res.cookie('userID', rows[0].userID);
+
+    let sql = "SELECT userID, password FROM users WHERE email = ?";
+    db.get(sql, [email], (err, row) => {
+        if (err) {
+            res.status(401).send('Auth error');
+            return console.error(err.message);
+        }
+        console.log(row);
+        if(row.password === pass){
+            res.cookie('userID', row.userID);
             res.status(201).send("Authorised");
         }else{
             res.status(401).send('Unauthorised');
         }
-    } catch(e) {
-        console.log(e);
-        res.status(401).send('Auth error');
-    }
+    });
 }
 
-function addUser(email, pass, res) {
-    dbConnection.connect(function(err) {
-        if (err) throw err;
-        console.log("Connected!");
-        const sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-        dbConnection.query(sql, [email, pass], function (err, result) {
-            if (err) {
-                res.status(500).send('Server error: registration failed');
-                throw err;
-            }
-            res.cookie('userID', result.insertId);
-            res.status(201).send("User added");
-            console.log(result);
-        });
+function addUser(username, email, pass, res) {
+    db.run(`INSERT INTO users(username, email, password) VALUES(?,?,?)`, [username, email, pass], function(err) {
+        if (err) {
+            res.status(500).send('Server error: registration failed');
+            return console.log(err.message);
+        }
+        res.cookie('userID', this.lastID);
+        res.status(201).send("User added");
+        // get the last insert id
+        console.log(`A row has been inserted with id ${this.lastID}`);
     });
 }
 

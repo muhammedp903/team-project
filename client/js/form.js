@@ -44,9 +44,8 @@ function loginBtnClick() {
 
 function registerBtnClick() {
     // TODO: Validate the form before trying to authenticate
-    // TODO: Add username to the database
     let data = {
-        // name: document.getElementById('name').value,
+        name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         pass: document.getElementById('password').value
     };

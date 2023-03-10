@@ -1,11 +1,45 @@
 
-function getTasks() {
-    // GET request to retrieve tasks from the database for the current user
+async function logoutBtnClick() {
+    // Default options are marked with *
+    fetch(`http://localhost:3000/logout`, {
+        method: "GET", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            // "Content-Type": "application/json",
+
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    })
+        .then((res) => {
+        if(res.status === 200){
+            window.location.replace("./login.html");
+        }else{
+            alert("An error occurred");
+        }
+        console.log(res); // JSON data parsed by `data.json()` call
+    });
 }
 
-getTasks(); // TODO: Store the returned tasks to show later
+function getTasks() {
+    // TODO: GET request to retrieve tasks from the database for the current user
+}
+
+getTasks(); // Store the returned tasks to show later
 
 window.addEventListener('load', () =>{
+
+    const logoutBtn = document.getElementsByClassName('logout')[0];
+    if(logoutBtn != null){
+        logoutBtn.addEventListener(
+            'click',
+            logoutBtnClick
+        );
+    }
+
     const form = document.querySelector("#new-task-form");
     const input = document.querySelector("#new-task-input");
     const list_el = document.querySelector("#tasks");
@@ -65,7 +99,7 @@ window.addEventListener('load', () =>{
         input.value = "";
 
         task_edit_el.addEventListener('click' , () =>{
-            if(task_edit_el.innerText.toLowerCase() == "edit" ){
+            if(task_edit_el.innerText.toLowerCase() === "edit" ){
                 task_input_el.removeAttribute("readonly");
                 task_input_el.focus();
              task_edit_el.innerText = "Save";
