@@ -38,7 +38,7 @@ body{
     font-size: 2rem;
     font-weight:1000;
     margin-bottom:1rem;
-    color:#fff;
+    color:#000000;
 
 }
 
@@ -46,7 +46,7 @@ body{
     font-size: 2rem;
     font-weight:1000;
     margin-top:1rem;
-    color:#fff;
+    color:#000000;
 }
 
 #new-task-form{
@@ -72,7 +72,7 @@ input , button{
 }
 
 #new-task-input::placeholder{
-    color:#fff;
+    color:#000000;
     font-weight:600;
 }
 
@@ -83,7 +83,7 @@ input , button{
     transition:0.4s;
     border:solid #0088a9;
     border-radius:1rem;
-    color:#fff;
+    color:#000;
 }
 
 #new-task-submit:hover{
@@ -162,7 +162,7 @@ li, a , button{
     font-family:"Montserrat",sans-serif;
     font-weight: 500 ;
     font-size:25px;
-    color:#fff;
+    color:#000000;
     text-decoration: none;
 
 }
@@ -222,7 +222,7 @@ input[type="date"]{
     border-radius: 5px;
 }
 ::-webkit-calendar-picker-indicator{
-    background-color: #ffffff;
+    background-color: #000000;
     padding: 5px;
     cursor: pointer;
     border-radius: 3px;
