@@ -17,3 +17,10 @@ Tutor: Elaine Duffin
 
 Create a todo app that allows the user to track progress with assesments and exams.
 
+## To Start Server
+
+- Change Dir to server (```cd server```)
+- make sure node/npm is installed (```npm --version``` OR ```node --version```)
+- install node packages (```npm i```)
+- install nodemon for dev package(```npm i nodemon --save-dev```)
+- run server (```npm run dev```)
