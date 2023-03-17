@@ -18,9 +18,9 @@ body{
     display:flex;
     justify-content: center;
     align-items:center;
+    background: url('/images/background.jpg');
     background-size:cover;
-    background-position: center;
-    background-image: url('/images/taxi.jpg');
+    background-position:center;
     font-family: 'roboto',sans-serif;
 }
 
