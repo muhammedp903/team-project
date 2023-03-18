@@ -15,7 +15,7 @@ app.use(cookieParser());
 
 let db = new sqlite3.Database('./database.db');
 
-app.get('/', async (req, res, next) =>{
+app.get('/', async (req, res) =>{
     const uid = req.cookies.userID;
     console.log(uid);
     if(uid != null){

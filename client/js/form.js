@@ -25,38 +25,56 @@ async function authPostReq(url, data) {
 }
 
 function loginBtnClick() {
-    // TODO: Validate the form before trying to authenticate
     let data = {
         email: document.getElementById('email').value,
         pass: document.getElementById('password').value
     };
-    authPostReq("login", data).then((res) => {
-        if(res.status === 201){
-            window.location.replace("./index.html");
-        }else if(res.status === 401){
-            alert("Incorrect email/password");
-        }else{
-            alert("An error occurred whilst trying to sign in");
-        }
-        console.log(res); // JSON data parsed by `data.json()` call
-    });
+    if(inputValidation(Object.values(data))){
+        authPostReq("login", data).then((res) => {
+            if(res.status === 201){
+                window.location.replace("./index.html");
+            }else if(res.status === 401){
+                alert("Incorrect email/password");
+            }else{
+                alert("An error occurred whilst trying to sign in");
+            }
+            console.log(res); // JSON data parsed by `data.json()` call
+        });
+    }else{
+        alert("Ensure all fields are filled");
+    }
 }
 
 function registerBtnClick() {
-    // TODO: Validate the form before trying to authenticate
     let data = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         pass: document.getElementById('password').value
     };
-    authPostReq("register", data).then((res) => {
-        if(res.status === 201){
-            window.location.replace("./index.html");
-        }else{
-            alert("An error occurred whilst trying to register");
+    if(inputValidation(Object.values(data))){
+        authPostReq("register", data).then((res) => {
+            if(res.status === 201){
+                window.location.replace("./index.html");
+            }else{
+                alert("An error occurred whilst trying to register");
+            }
+            console.log(res); // JSON data parsed by `data.json()` call
+        });
+    }else{
+        alert("Ensure all fields are filled");
+    }
+}
+
+function inputValidation(values) {
+    // Simple validation to ensure no fields are empty
+    // TODO: Better validation
+    let valid = true;
+    values.forEach((val)=>{
+        if(val.length === 0){
+            valid = false;
         }
-        console.log(res); // JSON data parsed by `data.json()` call
     });
+    return valid;
 }
 
 window.onload = async () => {
