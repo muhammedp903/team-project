@@ -10,7 +10,7 @@ body{
   display: flex;
   flex-direction: column;
   min-height:100vh;
-    background: url('../images/background.jpg');
+    background: url('../images/HomeBackground.png');
     background-size:cover;
     
    
