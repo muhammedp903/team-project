@@ -18,7 +18,7 @@ body{
     display:flex;
     justify-content: center;
     align-items:center;
-    background: url('../images/background.jpg');
+    background: url('../images/Formbackground.png');
     background-size:cover;
     background-position:center;
     font-family: 'roboto',sans-serif;
