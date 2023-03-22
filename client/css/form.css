@@ -18,7 +18,7 @@ body{
     display:flex;
     justify-content: center;
     align-items:center;
-    background: url('/images/background.jpg');
+    background: url('../images/Formbackground.png');
     background-size:cover;
     background-position:center;
     font-family: 'roboto',sans-serif;
@@ -27,7 +27,7 @@ body{
 .form{
     width:400px;
     height:auto;
-    color:#fff;
+    color:#000;
     font-family: 'roboto', sans-serif;
     
 }
@@ -52,7 +52,7 @@ input ,
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.3);
     border:none;
-    color: #fff;
+    color: #000;
     padding: 15px;
     transition: .5s;
     text-transform: capitalize;
@@ -60,13 +60,13 @@ input ,
 }
 
 input::placeholder{
-    color:#fff;
+    color:#000;
 }
 
 
 input:focus ,
 .submit-btn:hover{
-    background: #fff;
+    background: hsl(0, 0%, 100%);
     color: #000;
 }
 
@@ -87,14 +87,14 @@ input:focus::placeholder{
     opacity: 0;
     text-align: center;
     text-transform: capitalize;
-    color:rgba(255, 255, 255, 0.5);
+    color:rgba(0, 0, 0, 0.5);
     display: block;
     margin:30px auto;
 
 }
 
 .link{
-    color:#fff;
+    color:#000;
 }
 
 .alert-box{
@@ -112,7 +112,7 @@ input:focus::placeholder{
     border-top: 10px solid rgb(255, 37, 37);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    color:#fff;
+    color:#000;
     font-family:'roboto', sans-serif;
     text-align: center;
     transition: 1s;
@@ -124,5 +124,6 @@ input:focus::placeholder{
     text-transform: capitalize;
     color:rgba(255, 255, 255, 0.5);
     display: block;
-    
+    color: #000;
+
 }
