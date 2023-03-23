@@ -11,7 +11,7 @@
 }
 
 body{
-    position:reflective;
+    position:relative;
     width:100%;
     min-height:100vh;
     height:auto;
@@ -78,9 +78,8 @@ input:focus::placeholder{
     width:auto;
     padding:0 20px;
     cursor: pointer;
-    margin: 50px autp 0;
+    margin: 50px auto 0;
     opacity: 0;
-    
 
 }
 
@@ -126,5 +125,5 @@ input:focus::placeholder{
     color:rgba(255, 255, 255, 0.5);
     display: block;
     color: #000;
-    
+
 }
