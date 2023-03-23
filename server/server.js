@@ -38,7 +38,7 @@ app.get('/', async (req, res) =>{
 app.get('/tasks', (req, res) => {
     const uid = req.cookies.userID;
 
-    let sql = `SELECT content, dueDate FROM tasks WHERE userID = ?`;
+    let sql = `SELECT taskID, content, dueDate FROM tasks WHERE userID = ?`;
 
     db.all(sql, [uid], (err, rows) => {
         if (err) {
@@ -46,6 +46,16 @@ app.get('/tasks', (req, res) => {
         }
         res.status(200).send(rows);
     });
+});
+
+app.post('/addTask', (req, res) =>{
+    console.log("body: "+ req.body.content);
+    addTask(req.cookies.userID, req.body.content, res);
+});
+
+app.delete('/removeTask', (req, res) =>{
+    console.log(req.body);
+    removeTask(req.cookies.userID, req.body.taskID, res);
 });
 
 app.post('/login', (req, res) =>{
@@ -97,6 +107,32 @@ function addUser(username, email, pass, res) {
         res.status(201).send("User added");
         // get the last insert id
         console.log(`A row has been inserted with id ${this.lastID}`);
+    });
+}
+
+function addTask(uid, content, res){
+    db.run(`INSERT INTO tasks(userID, content) VALUES(?,?)`, [uid, content], function(err) {
+        if (err) {
+            res.status(500).send('Server error: add task failed');
+            return console.log(err.message);
+        }
+        res.status(201).send({taskID: this.lastID});
+        // get the last insert id
+        console.log(`A row has been inserted with id ${this.lastID}`);
+    });
+}
+
+function removeTask(uid, taskID, res){
+    db.run(`DELETE FROM tasks WHERE taskID = ? AND userID = ?`, [parseInt(taskID), uid], function(err) {
+        if (err) {
+            res.status(500).send('Server error: remove task failed');
+            return console.log(err.message);
+        }
+        if(this.changes === 1){
+            res.status(200).send(`The task has been deleted`);
+            return console.log(`The task has been deleted`, this.changes);
+        }
+        console.log("Nothing deleted", this.changes)
     });
 }
 
