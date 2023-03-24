@@ -78,7 +78,6 @@ async function login(email, pass, res) {
     // Check username and password are correct
 
     // TODO: Currently using plaintext passwords. Should be hashed
-    // TODO: Crashes on unrecognised email
     console.log(email, pass);
 
     let sql = "SELECT userID, password FROM users WHERE email = ?";
@@ -88,10 +87,12 @@ async function login(email, pass, res) {
             return console.error(err.message);
         }
         console.log(row);
-        if(row.password === pass){
+        if(typeof row === "undefined"){
+            res.status(401).send("User doesn't exist");
+        } else if(row.password === pass){
             res.cookie('userID', row.userID);
             res.status(201).send("Authorised");
-        }else{
+        } else{
             res.status(401).send('Unauthorised');
         }
     });
